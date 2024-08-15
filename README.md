@@ -1,2 +1,1 @@
 # python-learning
-python miscellaneous

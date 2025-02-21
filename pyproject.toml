@@ -1,17 +1,10 @@
-[tool.poetry]
-package-mode = false
+[project]
+name = "python-learning"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = []
 
-[tool.poetry.dependencies]
-python = "^3.12"
-
-[[tool.poetry.source]]
-name = "mirrors"
-url = "https://pypi.tuna.tsinghua.edu.cn/simple/"
-priority = "primary"
-
-[tool.poetry.group.dev.dependencies]
-pytest = "^8.3.2"
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+[tool.uv]
+index-url = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple"

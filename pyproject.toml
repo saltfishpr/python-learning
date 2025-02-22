@@ -10,7 +10,6 @@ dependencies = [
     "opencv-python>=4.11.0.86",
     "pandas>=2.2.3",
     "pymupdf>=1.25.3",
-    "pytesseract>=0.3.13",
 ]
 
 [tool.uv]

@@ -2,6 +2,7 @@ import argparse
 import logging
 import sys
 from datetime import timedelta
+
 import cv2
 import easyocr
 import pandas as pd

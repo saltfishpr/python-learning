@@ -11,6 +11,6 @@ python main.py --player_id="abc" --input xxx.mp4 --output output.csv --show_prog
 - frame_interval: 多久处理 1 帧 (毫秒)，默认 100
 - show_progress: 是否展示处理过程
 
-运行后鼠标拖选处理范围
+运行后鼠标拖选处理范围，回车确认
 
 ![](images/image.png)

@@ -1,11 +1,10 @@
+import argparse
+import logging
+import sys
+from datetime import timedelta
 import cv2
 import easyocr
 import pandas as pd
-import argparse
-from datetime import timedelta
-import re
-import logging
-import sys
 from fuzzywuzzy import fuzz
 
 # Initialize EasyOCR reader

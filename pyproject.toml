@@ -13,3 +13,13 @@ dependencies = [
 
 [tool.uv]
 index-url = "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple"
+
+[tool.isort]
+profile = "black"
+line_length = 88
+multi_line_output = 3
+
+[dependency-groups]
+dev = [
+    "isort>=6.0.0",
+]

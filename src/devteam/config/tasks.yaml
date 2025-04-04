@@ -1,0 +1,35 @@
+# {topic}: 产品名称
+define_product_vision:
+  agent: product_owner
+  description: >
+    清晰地阐明产品 {topic} 的目标、价值主张和未来方向。
+    确保这一愿景能够有效地传达给开发团队和相关利益方。
+  expected_output: >
+    一个明确且文档化的产品愿景声明，所有相关方都能理解并共享。
+
+manage_product_backlog:
+  agent: product_owner
+  description: >
+    创建、维护和优化产品待办事项列表，确保其包含全面且优先级明确的功能、改进和修复项。
+  expected_output: >
+    一个组织良好的产品待办事项列表，其中包含清晰的用户故事或待办事项。
+  context:
+    - define_product_vision
+  output_file: output/product_backlog.md
+
+prioritize_backlog_items:
+  agent: product_owner
+  description: >
+    根据业务价值、风险、工作量和依赖关系等因素对产品待办事项进行排序，确保团队优先处理最重要的事项。
+  expected_output: >
+    一个按相对重要性排序的优先级产品待办事项列表。
+  context:
+    - manage_product_backlog
+
+make_product_decisions:
+  agent: product_owner
+  description: >
+    根据不断变化的需求和反馈，及时且明智地做出与产品相关的决策，包括范围调整和需求变更。
+  expected_output: >
+    清晰且文档化的产品相关决策，以指导开发流程。
+  human_input: True

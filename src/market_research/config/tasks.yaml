@@ -1,0 +1,7 @@
+market_research:
+  agent: market_researcher
+  description: >
+    收集{topic}行业的市场规模、增长趋势、主要玩家和消费者行为数据
+  expected_output: >
+    完整的市场数据报告（含来源）
+  output_file: output/result.md

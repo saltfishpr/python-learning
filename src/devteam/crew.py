@@ -11,6 +11,10 @@ local_gemini = LLM(
     base_url="http://localhost:11434",
 )
 
+gemini = LLM(
+    model="gemini/gemini-2.0-flash",
+)
+
 
 @CrewBase
 class Devteam:
@@ -27,7 +31,7 @@ class Devteam:
     @agent
     def product_owner(self) -> Agent:
         return Agent(
-            config=self.agents_config["product_owner"], llm=local_gemini, verbose=True
+            config=self.agents_config["product_owner"], llm=gemini, verbose=True
         )
 
     @agent
@@ -69,6 +73,7 @@ class Devteam:
             process=Process.hierarchical,
             manager_agent=Agent(
                 config=self.agents_config["scrum_master"],
+                llm=gemini,
                 verbose=True,
             ),
             verbose=True,

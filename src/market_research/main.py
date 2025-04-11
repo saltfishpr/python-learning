@@ -4,7 +4,7 @@ import warnings
 
 from datetime import datetime
 
-from devteam.crew import Devteam
+from market_research.crew import MarketResearchCrew
 
 warnings.filterwarnings("ignore", category=SyntaxWarning, module="pysbd")
 
@@ -21,7 +21,7 @@ def run():
     inputs = {"topic": "情侣互动小程序", "current_year": str(datetime.now().year)}
 
     try:
-        Devteam().crew().kickoff(inputs=inputs)
+        MarketResearchCrew().crew().kickoff(inputs=inputs)
     except Exception as e:
         raise Exception(f"An error occurred while running the crew: {e}")
 
@@ -32,7 +32,7 @@ def train():
     """
     inputs = {"topic": "情侣互动小程序"}
     try:
-        Devteam().crew().train(
+        MarketResearchCrew().crew().train(
             n_iterations=int(sys.argv[1]), filename=sys.argv[2], inputs=inputs
         )
 
@@ -45,7 +45,7 @@ def replay():
     Replay the crew execution from a specific task.
     """
     try:
-        Devteam().crew().replay(task_id=sys.argv[1])
+        MarketResearchCrew().crew().replay(task_id=sys.argv[1])
 
     except Exception as e:
         raise Exception(f"An error occurred while replaying the crew: {e}")
@@ -57,7 +57,7 @@ def test():
     """
     inputs = {"topic": "情侣互动小程序", "current_year": str(datetime.now().year)}
     try:
-        Devteam().crew().test(
+        MarketResearchCrew().crew().test(
             n_iterations=int(sys.argv[1]), openai_model_name=sys.argv[2], inputs=inputs
         )
 

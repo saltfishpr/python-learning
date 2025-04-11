@@ -1,18 +1,23 @@
-# {topic}: 产品名称
 define_product_vision:
   agent: product_owner
   description: >
-    清晰地阐明产品 {topic} 的目标、价值主张和未来方向。
-    确保这一愿景能够有效地传达给开发团队和相关利益方。
+    Define the overarching vision for the product {topic}.
+    This involves understanding the target audience, the problem the product solves,
+    and the long-term goals for the product's success. This provides a guiding star
+    for all development efforts.
   expected_output: >
-    一个明确且文档化的产品愿景声明，所有相关方都能理解并共享。
+    A concise and clearly articulated product vision statement.
 
 manage_product_backlog:
   agent: product_owner
   description: >
-    创建、维护和优化产品待办事项列表，确保其包含全面且优先级明确的功能、改进和修复项。
+    Create, maintain, and refine the product backlog.
+    This involves capturing all potential features, enhancements, bug fixes, and other
+    work items related to the product. The backlog serves as a single source of truth
+    for what needs to be built.
   expected_output: >
-    一个组织良好的产品待办事项列表，其中包含清晰的用户故事或待办事项。
+    An updated and well-organized product backlog containing user stories or backlog items
+    with clear descriptions.
   context:
     - define_product_vision
   output_file: output/product_backlog.md

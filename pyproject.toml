@@ -8,6 +8,7 @@ dependencies = ["crewai[tools]>=0.108.0,<1.0.0"]
 
 [project.scripts]
 devteam = "devteam.main:run"
+market_research = "market_research.main:run"
 run_crew = "devteam.main:run"
 train = "devteam.main:train"
 replay = "devteam.main:replay"

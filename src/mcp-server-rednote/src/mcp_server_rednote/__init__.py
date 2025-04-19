@@ -22,18 +22,14 @@ def main(headless: bool) -> None:
 
 async def async_main(headless: bool) -> None:
     async with async_playwright() as p:
-        rn = await RedNote.create(p, headless=headless)
-        async with rn as rednote:
+        async with RedNote(p, headless=headless) as rednote:
             # 登录
             qr_code_base64 = await rednote.login()
             # 展示二维码
             image_data = base64.b64decode(qr_code_base64)
             image = Image.open(BytesIO(image_data))
             image.show()
-            cookies = await rednote.wait_for_cookies(timeout=60)
-            image.close()
-            for cookie in cookies:
-                logger.info(f"Cookie: {cookie.name}=$$$")
+            await rednote.wait_for_login_success(timeout=60)
 
 
 if __name__ == "__main__":

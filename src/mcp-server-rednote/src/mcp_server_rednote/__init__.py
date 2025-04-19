@@ -1,8 +1,11 @@
 import asyncio
+import base64
 import logging
 import sys
+from io import BytesIO
 
 import click
+from PIL import Image
 from playwright.async_api import async_playwright
 
 from .rednote import RedNote
@@ -22,25 +25,15 @@ async def async_main(headless: bool) -> None:
         rn = await RedNote.create(p, headless=headless)
         async with rn as rednote:
             # 登录
-            logger.info("开始登录")
             qr_code_base64 = await rednote.login()
-            logger.info("登录成功")
-
-            # 显示二维码
-            logger.info("请扫描二维码登录")
-            # PIL 展示二维码
-            import base64
-            from io import BytesIO
-
-            from PIL import Image
-
+            # 展示二维码
             image_data = base64.b64decode(qr_code_base64)
             image = Image.open(BytesIO(image_data))
             image.show()
-            cookies = await rednote.cookies
+            cookies = await rednote.wait_for_cookies(timeout=60)
             image.close()
             for cookie in cookies:
-                logger.info(f"Cookie: {cookie.name}={cookie.value}")
+                logger.info(f"Cookie: {cookie.name}=$$$")
 
 
 if __name__ == "__main__":

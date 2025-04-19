@@ -34,7 +34,7 @@ async def async_main(headless: bool) -> None:
 
             page = await rednote.new_page("https://www.xiaohongshu.com/explore")
             notes = await rednote.search_notes(
-                page=page, params=SearchNoteParams(keyword="附近的美食")
+                page=page, params=SearchNoteParams(keyword="附近的美食", limit=30)
             )
             for note in notes:
                 print(note.model_dump_json(indent=2))

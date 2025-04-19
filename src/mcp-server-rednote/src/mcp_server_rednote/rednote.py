@@ -260,30 +260,27 @@ class RedNote:
         await self.__goto(
             page, f"{self.BASE_URL}/search_result?keyword={encoded_keyword}"
         )
-
-        feeds_container = page.locator(".search-layout .feeds-container")
-        await feeds_container.wait_for(state="visible", timeout=10000)
-
-        feeds = feeds_container.locator("> section")
-        # 等待内容稳定
-        await self.wait_for_content_stabilization(
-            page=page,
-            locator=feeds.first,
-            wait_timeout=1,
-            max_attempts=10,
-        )
-
         result = []
-        async for note in self.__load_notes(page, feeds, params.limit):
+        async for note in self.__load_notes(page, params.limit):
             result.append(note)
         return result
 
     async def __load_notes(
-        self, page: Page, feeds: Locator, limit: int
+        self, page: Page, limit: int
     ) -> AsyncGenerator[SearchNoteResult]:
         data_idx_set = set()
 
         while True:
+            feeds_container = page.locator(".search-layout .feeds-container")
+            await feeds_container.wait_for(state="visible", timeout=10000)
+            feeds = feeds_container.locator("> section")
+            # 等待内容稳定
+            await self.wait_for_content_stabilization(
+                page=page,
+                locator=feeds.first,
+                wait_timeout=1,
+                max_attempts=10,
+            )
             feeds_count = await feeds.count()
             for i in range(feeds_count):
                 section = feeds.nth(i)
@@ -319,13 +316,10 @@ class RedNote:
                     author=author,
                     likes=likes,
                 )
-
-                if i == feeds_count - 1:
-                    await section.scroll_into_view_if_needed()
-                    await page.wait_for_timeout(1000)
-                    break
             if len(data_idx_set) >= limit:
                 break
+            # 滚动页面以加载更多笔记
+            await page.evaluate("window.scrollBy(0, 1000);")
 
     async def wait_for_content_stabilization(
         self,

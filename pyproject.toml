@@ -3,5 +3,12 @@ name = "python-learning"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.12"
-dependencies = []
+requires-python = ">=3.13"
+dependencies = [
+    "click",
+    "google-genai",
+    "google-cloud-translate",
+    "pydantic",
+    "rich",
+    "beautifulsoup4>=4.13.4",
+]

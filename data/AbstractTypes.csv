@@ -1,0 +1,3 @@
+﻿INI File,Section,Key,Value Type,Default Value,Adds to list,,,,,,,,,,,,,,
+Rules(md).ini,Object's ID,Name,string(48 symbols),ID,,,,,,,,,,,,,,,
+Rules(md).ini,Object's ID,UIName,string(31 symbol),"""""",,,,,,,,,,,,,,,
